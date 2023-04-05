@@ -1,0 +1,34 @@
+{% sw_extends '@Storefront/storefront/component/product/card/box-standard.html.twig' %}
+
+{#get active and search value from config file and set it to the variable#}
+{% set activeAndDeactive = config('IctechShopwareAsCms.config.ActiveDeactive') %}
+
+
+{#Block for product detail page ratings#}
+{% block component_product_box_rating %}
+    {% if activeAndDeactive != 'true' %}
+        {% if config('core.listing.showReview') %}
+            <div class="product-rating">
+                {% if product.ratingAverage %}
+                    {% sw_include '@Storefront/storefront/component/review/rating.html.twig' with {
+                        points: product.ratingAverage,
+                        style: 'text-primary'
+                    } %}
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endif %}
+{% endblock %}
+
+{% block component_product_box_price %}
+    {% if activeAndDeactive != 'true' %}
+       {% sw_include '@Storefront/storefront/component/product/card/price-unit.html.twig' %}
+    {% endif %}
+{% endblock %}
+
+{% block component_product_box_action %}
+    {% if activeAndDeactive != 'true' %}
+        {% sw_include '@Storefront/storefront/component/product/card/action.html.twig' %}
+    {% endif %}
+{% endblock %}
+

@@ -1,0 +1,28 @@
+{#extend product detail review tab file#}
+{% sw_extends '@Storefront/storefront/page/product-detail/tabs.html.twig' %}
+
+{#get active and search value from config file and set it to the variable#}
+{% set activeAndDeactive = config('IctechShopwareAsCms.config.ActiveDeactive') %}
+
+{#Block for the product detail page review#}
+{% block page_product_detail_tabs_navigation_review %}
+    {% if activeAndDeactive != 'true' %}
+        {% if config('core.listing.showReview') %}
+            <li class="nav-item">
+                <a class="nav-link {% if (ratingSuccess == 1) or (ratingSuccess == -1) %}active{% endif %} product-detail-tab-navigation-link"
+                   id="review-tab"
+                {{ dataBsToggleAttr }}="tab"
+                data-offcanvas-tabs="true"
+                href="#review-tab-pane"
+                role="tab"
+                aria-controls="review-tab-pane"
+                aria-selected="true">
+                {{ "detail.tabsReview"|trans|sw_sanitize }}
+                <span class="product-detail-tab-navigation-icon">
+                    {% sw_icon 'arrow-medium-right' style {'pack':'solid'} %}
+                </span>
+                </a>
+            </li>
+        {% endif %}
+    {% endif %}
+{% endblock %}
