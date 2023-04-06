@@ -4,15 +4,17 @@ declare(strict_types=1);
 
 namespace IctechShopwareAsCms\Core\Content\IctCms;
 
-use phpDocumentor\Reflection\Types\Integer;
+use IctechShopwareAsCms\Core\Content\IctCms\Aggregate\IctCmsTranslation\IctCmsTranslationDefinition;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityDefinition;
+use Shopware\Core\Framework\DataAbstractionLayer\Field\BoolField;
+use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\ApiAware;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\PrimaryKey;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\IdField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\StringField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\TranslatedField;
+use Shopware\Core\Framework\DataAbstractionLayer\Field\TranslationsAssociationField;
 use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
-use Shopware\Core\System\CustomEntity\Xml\Field\BoolField;
 
 class IctCmsDefinition extends EntityDefinition
 {
@@ -34,6 +36,7 @@ class IctCmsDefinition extends EntityDefinition
             (new TranslatedField('subject')),
             (new TranslatedField('description')),
             (new BoolField('active', 'active')),
+            (new TranslationsAssociationField(IctCmsTranslationDefinition::class, 'ictec_cms_id'))->addFlags(new ApiAware(), new Required()),
         ));
     }
 }
