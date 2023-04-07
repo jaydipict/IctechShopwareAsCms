@@ -13,9 +13,9 @@ class LanguageExtension extends EntityExtension
     {
         $collection->add(
             new OneToManyAssociationField(
-                'ictCmsTransId',
+                'ictCms',
                 IctCmsTranslationDefinition::class,
-                'ictec_cms_id'),
+                'ict_cms_id')
         );
     }
     public function getDefinitionClass(): string

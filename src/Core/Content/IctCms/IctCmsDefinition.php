@@ -18,13 +18,22 @@ use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
 
 class IctCmsDefinition extends EntityDefinition
 {
-    public const ENTITY_NAME = 'ictec_cms';
+    public const ENTITY_NAME = 'ict_cms';
 
     public function getEntityName(): string
     {
         return self::ENTITY_NAME;
     }
 
+    public function getEntityClass(): string
+    {
+        return IctCmsEntity::class;
+    }
+
+    public function getCollectionClass(): string
+    {
+        return IctCmsCollection::class;
+    }
     protected function defineFields(): FieldCollection
     {
         return new FieldCollection(array(
@@ -36,7 +45,7 @@ class IctCmsDefinition extends EntityDefinition
             (new TranslatedField('subject')),
             (new TranslatedField('description')),
             (new BoolField('active', 'active')),
-            (new TranslationsAssociationField(IctCmsTranslationDefinition::class, 'ictec_cms_id'))->addFlags(new ApiAware(), new Required()),
+            (new TranslationsAssociationField(IctCmsTranslationDefinition::class, 'ict_cms_id'))->addFlags(new ApiAware(), new Required()),
         ));
     }
 }

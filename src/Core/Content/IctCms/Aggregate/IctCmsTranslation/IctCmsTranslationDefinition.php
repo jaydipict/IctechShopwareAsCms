@@ -11,22 +11,22 @@ use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
 
 class IctCmsTranslationDefinition extends EntityTranslationDefinition
 {
-    public const ENTITY_NAME = 'ictec_cms_translation';
+    public const ENTITY_NAME = 'ict_cms_translation';
 
     public function getEntityName(): string
     {
         return self::ENTITY_NAME;
     }
 
-//    public function getCollectionClass(): string
-//    {
-//        return IctCmsTranslationCollection::class;
-//    }
-//
-//    public function getEntityClass(): string
-//    {
-//        return IctCmsTranslationEntity::class;
-//    }
+    public function getCollectionClass(): string
+    {
+        return IctCmsTranslationCollection::class;
+    }
+
+    public function getEntityClass(): string
+    {
+        return IctCmsTranslationEntity::class;
+    }
 
     protected function getParentDefinitionClass(): string
     {

@@ -1,0 +1,101 @@
+{
+    "sw-custom-cms-form": {
+        "elements": {
+            "general": {
+                "config": {
+                    "label": {
+                        "verticalAlign": "Vertical align",
+                        "alignment": "Alignment",
+                        "verticalAlignTop": "Top",
+                        "verticalAlignCenter": "Center",
+                        "verticalAlignBottom": "Bottom",
+                        "displayMode": "Display mode",
+                        "displayModeStandard": "Standard",
+                        "displayModeCover": "Cover",
+                        "displayModeStretch": "Stretch",
+                        "displayModeContain": "Contain",
+                        "autoSlide": "Auto slide",
+                        "autoplayTimeout": "Delay",
+                        "speed": "Animation delay"
+                    },
+                    "tab": {
+                        "content": "Content",
+                        "settings": "Settings",
+                        "options": "Options"
+                    }
+                }
+            },
+            "productName": {
+                "label": "Product Name"
+            },
+            "form": {
+                "label": "CustomForm",
+                "config": {
+                    "label": {
+                        "receiverEmail": "Receiver addresses",
+                        "title": "Title",
+                        "type": "Form type",
+                        "typeContact": "Contact",
+                        "typeNewsletter": "Newsletter",
+                        "confirmationText": "Confirmation text"
+                    },
+                    "placeholder": {
+                        "type": "Select a form type..."
+                    }
+                },
+                "element": {
+                    "label": {
+                        "action": "Action",
+                        "email": "Email address*",
+                        "firstName": "First name*",
+                        "lastName": "Last name*",
+                        "message": "Description*",
+                        "newsletterSubmit": "Continue",
+                        "phone": "Phone number",
+                        "privacy": "Privacy",
+                        "salutation": "Salutation*",
+                        "salutationUndisclosed": "Prefer not to disclose",
+                        "send": "Send",
+                        "subject": "Subject*",
+                        "subscribeToNewsletter": "Subscribe to newsletter"
+                    },
+                    "placeholder": {
+                        "firstName": "John",
+                        "lastName": "Doe",
+                        "email": "john@doe.com",
+                        "phone": "+4920 3920173",
+                        "subject": "Lorem ipsum dolor sit amet.",
+                        "message": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum."
+                    },
+                    "helpText": {
+                        "privacy": "I have read the data protection information.",
+                        "requiredFields": "Fields marked with * are required"
+                    }
+                },
+                "preview": {
+                    "label": {
+                        "form": "Form",
+                        "send": "Send"
+                    }
+                }
+            }
+        },
+        "blocks": {
+            "custom-cms-form": {
+                "formCustom": {
+                    "label": "Custom Form"
+                }
+            },
+            "blockDisableState": "This block is not visible on any device. You can edit the block but the changes will not be visible in your shop. Edit this layout in shopping experiences module to change the block visibility."
+        }
+    },
+    "sw-privileges": {
+        "permissions": {
+            "cms": {
+                "label": "Shopping Experiences"
+            }
+        }
+    }
+}
+
+
