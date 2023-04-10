@@ -2,7 +2,6 @@
 
 {#get active and search value from config file and set it to the variable#}
 {% set activeAndDeactive = config('IctechShopwareAsCms.config.ActiveDeactive') %}
-
 {% block page_product_detail_price %}
     {% if activeAndDeactive != 'true' %}
         <div class="product-detail-price-container">

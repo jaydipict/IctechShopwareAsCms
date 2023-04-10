@@ -60,8 +60,8 @@
                         "subscribeToNewsletter": "Subscribe to newsletter"
                     },
                     "placeholder": {
-                        "firstName": "John",
-                        "lastName": "Doe",
+                        "firstName": "John Custom",
+                        "lastName": "Doe custom",
                         "email": "john@doe.com",
                         "phone": "+4920 3920173",
                         "subject": "Lorem ipsum dolor sit amet.",
@@ -74,7 +74,7 @@
                 },
                 "preview": {
                     "label": {
-                        "form": "Form",
+                        "formPreview": "Custom Form Preview",
                         "send": "Send"
                     }
                 }

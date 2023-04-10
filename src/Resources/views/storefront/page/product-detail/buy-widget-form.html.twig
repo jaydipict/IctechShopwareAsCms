@@ -1,0 +1,38 @@
+{% sw_extends '@Storefront/storefront/page/product-detail/buy-widget-form.html.twig' %}
+
+{#get active and search value from config file and set it to the variable#}
+{% set activeAndDeactive = config('IctechShopwareAsCms.config.ActiveDeactive') %}
+{{ dump(activeAndDeactive) }}
+{% set inquiryFormPopup = config('IctechShopwareAsCms.config.InquiryFormPopup') %}
+
+{% block page_product_detail_buy_button_container %}
+    <div class="{% if showQuantitySelect %}col-8{% else %}col-12{% endif %}">
+        {% block page_product_detail_buy_button %}
+
+            {% if (activeAndDeactive != 'true') and (inquiryFormPopup != 'true') %}
+                {# @deprecated tag:v6.5.0 - Bootstrap v5 removes `btn-block` class, use `d-grid` wrapper instead #}
+                    {% if feature('v6.5.0.0') %}
+                        <div class="d-grid">
+                            <button class="btn btn-primary btn-buy"
+                                    title="{{ "detail.addProduct"|trans|striptags }}"
+                                    aria-label="{{ "detail.addProduct"|trans|striptags }}">
+                                {{ "detail.addProduct"|trans|sw_sanitize }}
+                            </button>
+                        </div>
+                    {% else %}
+                        <button class="btn btn-primary btn-block btn-buy"
+                                title="{{ "detail.addProduct"|trans|striptags }}"
+                                aria-label="{{ "detail.addProduct"|trans|striptags }}">
+                            {{ "detail.addProduct"|trans|sw_sanitize }}
+                        </button>
+                    {% endif %}
+            {% else %}
+                <button class="btn btn-primary btn-block btn-buy"
+                        title="{{ "detail.contactCusForm"|trans|striptags }}"
+                        aria-label="{{ "detail.contactCusForm"|trans|striptags }}">
+                    {{ "detail.contactCusForm"|trans|sw_sanitize }}
+                </button>
+            {% endif %}
+        {% endblock %}
+    </div>
+{% endblock %}

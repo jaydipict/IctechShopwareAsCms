@@ -1,6 +1,6 @@
 import './component';
 import './config';
-// import './preview';
+import './preview';
 
 /**
  * @private since v6.5.0
@@ -10,8 +10,8 @@ Shopware.Service('cmsService').registerCmsElement({
     name: 'custom-cms-form',
     label: 'sw-cms.elements.form.label',
     component: 'sw-cms-el-custom-cms-form',
-    // configComponent: 'sw-cms-el-custom-config-form',
-    // previewComponent: 'sw-cms-el-custom-preview-form',
+    configComponent: 'sw-cms-el-config-custom-cms-form',
+    previewComponent: 'sw-cms-el-preview-custom-cms-form',
     defaultConfig: {
         type: {
             source: 'static',
