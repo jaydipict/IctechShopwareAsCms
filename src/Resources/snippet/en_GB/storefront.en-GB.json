@@ -247,7 +247,8 @@
         "descriptionPlaceholder": "Enter description...",
         "privacyNotice": "By selecting continue you confirm that you have read and agree to our <a data-toggle=\"modal\" data-bs-toggle=\"modal\" data-url=\"%privacyUrl%\" href=\"%privacyUrl%\" title=\"Data protection information\">data protection information</a>.",
         "formSubmit": "Submit",
-        "success": "We have received your contact request and will process it as soon as possible."
+        "success": "We have received your contact request and will process it as soon as possible.",
+        "customContactLink": "Contact Form"
     },
     "detail": {
         "ordernumberLabel": "Product number:",

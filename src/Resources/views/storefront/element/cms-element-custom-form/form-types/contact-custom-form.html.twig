@@ -1,9 +1,16 @@
 {% block cms_form_contact_custom_form %}
-    <form action="{{ path(action) }}"
+<div class="modal fade"
+     id="customContactForm"
+     data-backdrop="static"
+     tabindex="-1"
+     role="dialog"
+     aria-hidden="true">
+
+    <div class="modal-dialog" role="dialog">
+    <form action=""
           method="post"
           data-form-csrf-handler="true"
           data-form-validation="true">
-
         <div class="form-content">
             <div class="{{ formRowClass }}">
                 {% block cms_form_contact_input_first_name %}
@@ -95,9 +102,9 @@
         {% block cms_form_contact_hidden_fields %}
             <div class="form-hidden-fields">
                 {# @deprecated tag:v6.5.0 - Block cms_form_contact_csrf will be removed. #}
-                {% block cms_form_contact_csrf %}
-                    {{ sw_csrf(action) }}
-                {% endblock %}
+{#                {% block cms_form_contact_csrf %}#}
+{#                    {{ sw_csrf(action) }}#}
+{#                {% endblock %}#}
 
                 {% if page.navigationId and page.entityName %}
                     <input type="hidden" name="navigationId" value="{{ page.navigationId }}"/>
@@ -112,4 +119,6 @@
             </div>
         {% endblock %}
     </form>
+    </div>
+</div>
 {% endblock %}
