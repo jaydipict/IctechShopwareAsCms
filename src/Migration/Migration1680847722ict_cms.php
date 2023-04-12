@@ -15,7 +15,7 @@ class Migration1680847722ict_cms extends MigrationStep
     public function update(Connection $connection): void
     {
         $connection->executeStatement("
-        CREATE TABLE `ict_cms` (
+        CREATE TABLE IF NOT EXISTS `ict_cms` (
     `id` BINARY(16) NOT NULL,
     `email` VARCHAR(255) NOT NULL,
     `contact` VARCHAR(255) NOT NULL,
@@ -27,7 +27,7 @@ class Migration1680847722ict_cms extends MigrationStep
     ");
 
         $connection->executeStatement("
-        CREATE TABLE `ict_cms_translation` (
+        CREATE TABLE IF NOT EXISTS `ict_cms_translation` (
     `name` VARCHAR(255) NOT NULL,
     `subject` VARCHAR(255) NOT NULL,
     `description` VARCHAR(255) NOT NULL,
