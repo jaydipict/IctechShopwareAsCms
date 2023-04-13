@@ -3,6 +3,11 @@
         xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/trunk/src/Core/System/SystemConfig/Schema/config.xsd">
     <card>
         <title>CMS configuration</title>
+        <input-field type="text">
+            <name>Plugin</name>
+            <label>Plugin</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
         <input-field type="bool">
             <name>ActiveDeactive</name>
             <label>Active/Deactive</label>

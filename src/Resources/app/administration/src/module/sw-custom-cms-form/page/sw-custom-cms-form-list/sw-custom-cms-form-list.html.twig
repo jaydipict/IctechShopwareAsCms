@@ -1,0 +1,63 @@
+{% block sw_custom_cms_form_list %}
+    <sw-page class="sw-custom-cms-form-list">
+        {% block sw_custom_cms_list_search_bar %}
+            <template #search-bar>
+                <sw-search-bar
+                    initial-search-type="customer"
+                    :initial-search="term"
+                    @search="onSearch"
+                />
+            </template>
+        {% endblock %}
+
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_custom_cms_form_list_smart_bar_header %}
+            <template #smart-bar-header>
+                <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                {% block sw_custom_cms_form_list_smart_bar_header_title %}
+                    <h2>
+                        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                        {% block sw_custom_cms_form_list_smart_bar_header_title_text %}
+                            {{ $tc('sw-custom-cms-form.elements.general.list.cusCmsTitle') }}
+                        {% endblock %}
+
+                        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                        {% block sw_custom_cms_form_list_smart_bar_header_amount %}
+                            <span
+                                v-if="!isLoading"
+                                class="sw-page__smart-bar-amount"
+                            >
+                    ({{ total }})
+                    </span>
+                        {% endblock %}
+                    </h2>
+                {% endblock %}
+            </template>
+        {% endblock %}
+
+        <template #language-switch>
+            <sw-language-switch @on-change="onChangeLanguage"/>
+        </template>
+
+
+        <template #content>
+            {% block sw_custom_cms_form_list_content %}
+                <div class="sw_custom_cms_form-list__content">
+                    {% block sw_custom_cms_form_list_grid %}
+                        <sw-entity-listing
+                            class="sw-customer-list-grid"
+                            identifier="sw-custom-cms-form-list"
+                            :items="formData"
+                            :disable-data-fetching="true"
+                            :columns="formDataColumns"
+                            :repository="cusCmsRepository"
+                            :is-loading="isLoading">
+                        </sw-entity-listing>
+                    {% endblock %}
+                </div>
+            {% endblock %}
+        </template>
+
+
+    </sw-page>
+{% endblock %}

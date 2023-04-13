@@ -36,14 +36,13 @@ class CustomContactFormController extends StorefrontController
     {
        $data = $this->ictCmsRepository->create([
             [
-                'firstName' => $request->get('firstName'),
+                'name' => $request->get('firstName'),
                 'email' => $request->get('email'),
                 'contact_number' => $request->get('phone'),
                 'subject' => $request->get('subject'),
                 'description' => $request->get('description')
             ]
         ], $context->getContext());
-            dd($data);
        return new JsonResponse($data);
     }
 
