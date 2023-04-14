@@ -4,7 +4,6 @@ namespace IctechShopwareAsCms\Core\Content\IctCms;
 
 use Shopware\Core\Framework\DataAbstractionLayer\EntityCollection;
 
-
 /**
  * @method void                add(IctCmsEntity $entity)
  * @method void                set(string $key, IctCmsEntity $entity)
@@ -14,7 +13,7 @@ use Shopware\Core\Framework\DataAbstractionLayer\EntityCollection;
  * @method IctCmsEntity|null first()
  * @method IctCmsEntity|null last()
  */
- #[Package('core')]
+#[Package('core')]
 class IctCmsCollection extends EntityCollection
 {
     protected function getExpectedClass(): string

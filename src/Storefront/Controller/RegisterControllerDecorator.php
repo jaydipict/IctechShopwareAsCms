@@ -14,7 +14,6 @@ use Shopware\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsFilter;
 use Shopware\Core\Framework\Feature;
 use Shopware\Core\Framework\Log\Package;
-use Shopware\Core\Framework\Routing\Annotation\RouteScope;
 use Shopware\Core\Framework\Routing\Annotation\Since;
 use Shopware\Core\Framework\Routing\Exception\MissingRequestParameterException;
 use Shopware\Core\Framework\Validation\DataBag\DataBag;
@@ -26,7 +25,6 @@ use Shopware\Core\System\SalesChannel\SalesChannelContext;
 use Shopware\Core\System\SystemConfig\SystemConfigService;
 use Shopware\Storefront\Controller\StorefrontController;
 use Shopware\Storefront\Framework\AffiliateTracking\AffiliateTrackingListener;
-use Shopware\Storefront\Framework\Captcha\Annotation\Captcha;
 use Shopware\Storefront\Framework\Routing\Annotation\NoStore;
 use Shopware\Storefront\Framework\Routing\RequestTransformer;
 use Shopware\Storefront\Page\Account\CustomerGroupRegistration\AbstractCustomerGroupRegistrationPageLoader;
@@ -95,7 +93,9 @@ class RegisterControllerDecorator extends StorefrontController
 
     /**
      * @Since("6.0.0.0")
+     *
      * @Route("/account/register", name="frontend.account.register.page", methods={"GET"})
+     *
      * @NoStore
      */
     public function accountRegisterPage(Request $request, RequestDataBag $data, SalesChannelContext $context): Response
@@ -130,7 +130,9 @@ class RegisterControllerDecorator extends StorefrontController
 
     /**
      * @Since("6.3.1.0")
+     *
      * @Route("/customer-group-registration/{customerGroupId}", name="frontend.account.customer-group-registration.page", methods={"GET"})
+     *
      * @NoStore
      */
     public function customerGroupRegistration(string $customerGroupId, Request $request, RequestDataBag $data, SalesChannelContext $context): Response
@@ -161,10 +163,11 @@ class RegisterControllerDecorator extends StorefrontController
             'data' => $data,
         ]);
     }
-
     /**
      * @Since("6.0.0.0")
+     *
      * @Route("/checkout/register", name="frontend.checkout.register.page", options={"seo"="false"}, methods={"GET"})
+     *
      * @NoStore
      */
     public function checkoutRegisterPage(Request $request, RequestDataBag $data, SalesChannelContext $context): Response
@@ -196,9 +199,9 @@ class RegisterControllerDecorator extends StorefrontController
             ['redirectTo' => $redirect, 'page' => $page, 'data' => $data]
         );
     }
-
     /**
      * @Since("6.0.0.0")
+     *
      * @Route("/account/register", name="frontend.account.register.save", methods={"POST"}, defaults={"_captcha"=true})
      */
     public function register(Request $request, RequestDataBag $data, SalesChannelContext $context): Response
@@ -251,9 +254,9 @@ class RegisterControllerDecorator extends StorefrontController
 
         return $this->createActionResponse($request);
     }
-
     /**
      * @Since("6.1.0.0")
+     *
      * @Route("/registration/confirm", name="frontend.account.register.mail", methods={"GET"})
      */
     public function confirmRegistration(SalesChannelContext $context, QueryDataBag $queryDataBag): Response
@@ -286,7 +289,6 @@ class RegisterControllerDecorator extends StorefrontController
 
         return $this->redirectToRoute('frontend.account.home.page');
     }
-
     private function isDoubleOptIn(DataBag $data, SalesChannelContext $context): bool
     {
         $creatueCustomerAccount = $data->getBoolean('createCustomerAccount');
@@ -330,7 +332,6 @@ class RegisterControllerDecorator extends StorefrontController
 
         return true;
     }
-
     private function getAdditionalRegisterValidationDefinitions(DataBag $data, SalesChannelContext $context): DataValidationDefinition
     {
         $definition = new DataValidationDefinition('storefront.confirmation');
@@ -355,7 +356,6 @@ class RegisterControllerDecorator extends StorefrontController
 
         return $definition;
     }
-
     private function prepareAffiliateTracking(RequestDataBag $data, SessionInterface $session): DataBag
     {
         $affiliateCode = $session->get(AffiliateTrackingListener::AFFILIATE_CODE_KEY);
@@ -369,7 +369,6 @@ class RegisterControllerDecorator extends StorefrontController
 
         return $data;
     }
-
     private function getConfirmUrl(SalesChannelContext $context, Request $request): string
     {
         /** @var string $domainUrl */

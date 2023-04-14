@@ -58,8 +58,6 @@ class WishlistControllerDecorator extends StorefrontController
     private EventDispatcherInterface $eventDispatcher;
 
     private SystemConfigService $systemConfigService;
-
-
     /**
      * @internal
      */
@@ -72,7 +70,7 @@ class WishlistControllerDecorator extends StorefrontController
         GuestWishlistPageLoader $guestPageLoader,
         GuestWishlistPageletLoader $guestPageletLoader,
         EventDispatcherInterface $eventDispatcher,
-        SystemConfigService  $systemConfigService
+        SystemConfigService $systemConfigService
     ) {
         $this->wishlistPageLoader = $wishlistPageLoader;
         $this->wishlistLoadRoute = $wishlistLoadRoute;
@@ -84,10 +82,11 @@ class WishlistControllerDecorator extends StorefrontController
         $this->eventDispatcher = $eventDispatcher;
         $this->systemConfigService = $systemConfigService;
     }
-
     /**
      * @Since("6.3.4.0")
+     *
      * @Route("/wishlist", name="frontend.wishlist.page", options={"seo"="false"}, methods={"GET"})
+     *
      * @NoStore
      */
     public function index(Request $request, SalesChannelContext $context): Response
@@ -110,9 +109,9 @@ class WishlistControllerDecorator extends StorefrontController
 
         return $this->renderStorefront('@Storefront/storefront/page/wishlist/index.html.twig', ['page' => $page]);
     }
-
     /**
      * @Since("6.3.5.0")
+     *
      * @Route("/wishlist/guest-pagelet", name="frontend.wishlist.guestPage.pagelet", options={"seo"="false"}, methods={"POST"}, defaults={"XmlHttpRequest"=true})
      */
     public function guestPagelet(Request $request, SalesChannelContext $context): Response
@@ -131,9 +130,9 @@ class WishlistControllerDecorator extends StorefrontController
             ['page' => $pagelet, 'searchResult' => $pagelet->getSearchResult()->getObject()]
         );
     }
-
     /**
      * @Since("6.3.4.0")
+     *
      * @Route("/widgets/wishlist", name="widgets.wishlist.pagelet", options={"seo"="false"}, methods={"GET", "POST"}, defaults={"XmlHttpRequest"=true, "_loginRequired"=true})
      */
     public function ajaxPagination(Request $request, SalesChannelContext $context, CustomerEntity $customer): Response
@@ -148,9 +147,9 @@ class WishlistControllerDecorator extends StorefrontController
 
         return $response;
     }
-
     /**
      * @Since("6.3.4.0")
+     *
      * @Route("/wishlist/list", name="frontend.wishlist.product.list", options={"seo"="false"}, methods={"GET"}, defaults={"XmlHttpRequest"=true, "_loginRequired"=true})
      */
     public function ajaxList(Request $request, SalesChannelContext $context, CustomerEntity $customer): Response
@@ -166,9 +165,9 @@ class WishlistControllerDecorator extends StorefrontController
 
         return new JsonResponse($res->getProductListing()->getIds());
     }
-
     /**
      * @Since("6.3.4.0")
+     *
      * @Route("/wishlist/product/delete/{id}", name="frontend.wishlist.product.delete", methods={"POST", "DELETE"}, defaults={"XmlHttpRequest"=true, "_loginRequired"=true})
      */
     public function remove(string $id, Request $request, SalesChannelContext $context, CustomerEntity $customer): Response
@@ -187,9 +186,9 @@ class WishlistControllerDecorator extends StorefrontController
 
         return $this->createActionResponse($request);
     }
-
     /**
      * @Since("6.3.4.0")
+     *
      * @Route("/wishlist/add/{productId}", name="frontend.wishlist.product.add", options={"seo"="false"}, methods={"POST"}, defaults={"XmlHttpRequest"=true, "_loginRequired"=true})
      */
     public function ajaxAdd(string $productId, SalesChannelContext $context, CustomerEntity $customer): JsonResponse
@@ -205,9 +204,9 @@ class WishlistControllerDecorator extends StorefrontController
             'success' => $success,
         ]);
     }
-
     /**
      * @Since("6.3.4.0")
+     *
      * @Route("/wishlist/remove/{productId}", name="frontend.wishlist.product.remove", options={"seo"="false"}, methods={"POST"}, defaults={"XmlHttpRequest"=true, "_loginRequired"=true})
      */
     public function ajaxRemove(string $productId, SalesChannelContext $context, CustomerEntity $customer): JsonResponse
@@ -226,6 +225,7 @@ class WishlistControllerDecorator extends StorefrontController
 
     /**
      * @Since("6.3.4.0")
+     *
      * @Route("/wishlist/add-after-login/{productId}", name="frontend.wishlist.add.after.login", options={"seo"="false"}, methods={"GET"}, defaults={"_loginRequired"=true})
      */
     public function addAfterLogin(string $productId, SalesChannelContext $context, CustomerEntity $customer): Response
@@ -245,6 +245,7 @@ class WishlistControllerDecorator extends StorefrontController
 
     /**
      * @Since("6.3.4.0")
+     *
      * @Route("/wishlist/merge", name="frontend.wishlist.product.merge", options={"seo"="false"}, methods={"POST"}, defaults={"XmlHttpRequest"=true, "_loginRequired"=true})
      */
     public function ajaxMerge(RequestDataBag $requestDataBag, Request $request, SalesChannelContext $context, CustomerEntity $customer): Response
@@ -253,10 +254,14 @@ class WishlistControllerDecorator extends StorefrontController
             $this->mergeWishlistProductRoute->merge($requestDataBag, $context, $customer);
 
             return $this->renderStorefront('@Storefront/storefront/utilities/alert.html.twig', [
-                'type' => 'info', 'content' => $this->trans('wishlist.wishlistMergeHint'),
+                'type' => 'info',
+                'content' => $this->trans('wishlist.wishlistMergeHint'),
             ]);
         } catch (\Throwable $exception) {
-            $this->addFlash(self::DANGER, $this->trans('error.message-default'));
+            $this->addFlash(
+                self::DANGER,
+                $this->trans('error.message-default')
+            );
         }
 
         return $this->createActionResponse($request);
@@ -264,6 +269,7 @@ class WishlistControllerDecorator extends StorefrontController
 
     /**
      * @Since("6.3.4.0")
+     *
      * @Route("/wishlist/merge/pagelet", name="frontend.wishlist.product.merge.pagelet", methods={"GET", "POST"}, defaults={"XmlHttpRequest"=true, "_loginRequired"=true})
      */
     public function ajaxPagelet(Request $request, SalesChannelContext $context, CustomerEntity $customer): Response
@@ -273,9 +279,12 @@ class WishlistControllerDecorator extends StorefrontController
         $page = $this->wishlistPageLoader->load($request, $context, $customer);
         $this->hook(new WishlistWidgetLoadedHook($page, $context));
 
-        return $this->renderStorefront('@Storefront/storefront/page/wishlist/wishlist-pagelet.html.twig', [
+        return $this->renderStorefront(
+            '@Storefront/storefront/page/wishlist/wishlist-pagelet.html.twig',
+            [
             'page' => $page,
             'searchResult' => $page->getWishlist()->getProductListing(),
-        ]);
+        ]
+        );
     }
 }

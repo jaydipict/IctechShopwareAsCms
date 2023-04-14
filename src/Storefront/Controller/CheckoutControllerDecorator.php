@@ -2,7 +2,6 @@
 
 namespace IctechShopwareAsCms\Storefront\Controller;
 
-use Shopware\Core\Checkout\Cart\Cart;
 use Shopware\Core\Checkout\Cart\Error\Error;
 use Shopware\Core\Checkout\Cart\Error\ErrorCollection;
 use Shopware\Core\Checkout\Cart\Exception\InvalidCartException;
@@ -16,7 +15,6 @@ use Shopware\Core\Checkout\Payment\Exception\UnknownPaymentMethodException;
 use Shopware\Core\Checkout\Payment\PaymentService;
 use Shopware\Core\Framework\Feature;
 use Shopware\Core\Framework\Log\Package;
-use Shopware\Core\Framework\Routing\Annotation\RouteScope;
 use Shopware\Core\Framework\Routing\Annotation\Since;
 use Shopware\Core\Framework\Validation\DataBag\RequestDataBag;
 use Shopware\Core\Framework\Validation\Exception\ConstraintViolationException;
@@ -70,8 +68,6 @@ class CheckoutControllerDecorator extends StorefrontController
     private SystemConfigService $config;
 
     private AbstractLogoutRoute $logoutRoute;
-
-
     /**
      * @internal
      */
@@ -99,7 +95,9 @@ class CheckoutControllerDecorator extends StorefrontController
 
     /**
      * @Since("6.0.0.0")
+     *
      * @NoStore
+     *
      * @Route("/checkout/cart", name="frontend.checkout.cart.page", options={"seo"="false"}, methods={"GET"})
      */
     public function cartPage(Request $request, SalesChannelContext $context): Response
@@ -137,7 +135,9 @@ class CheckoutControllerDecorator extends StorefrontController
 
     /**
      * @Since("6.0.0.0")
+     *
      * @NoStore
+     *
      * @Route("/checkout/confirm", name="frontend.checkout.confirm.page", options={"seo"="false"}, methods={"GET"}, defaults={"XmlHttpRequest"=true})
      */
     public function confirmPage(Request $request, SalesChannelContext $context): Response
@@ -176,7 +176,9 @@ class CheckoutControllerDecorator extends StorefrontController
 
     /**
      * @Since("6.0.0.0")
+     *
      * @Route("/checkout/finish", name="frontend.checkout.finish.page", options={"seo"="false"}, methods={"GET"})
+     *
      * @NoStore
      */
     public function finishPage(Request $request, SalesChannelContext $context, RequestDataBag $dataBag): Response
@@ -208,6 +210,7 @@ class CheckoutControllerDecorator extends StorefrontController
 
     /**
      * @Since("6.0.0.0")
+     *
      * @Route("/checkout/order", name="frontend.checkout.finish.order", options={"seo"="false"}, methods={"POST"})
      */
     public function order(RequestDataBag $data, SalesChannelContext $context, Request $request): Response
@@ -248,6 +251,7 @@ class CheckoutControllerDecorator extends StorefrontController
 
     /**
      * @Since("6.0.0.0")
+     *
      * @Route("/widgets/checkout/info", name="frontend.checkout.info", methods={"GET"}, defaults={"XmlHttpRequest"=true})
      */
     public function info(Request $request, SalesChannelContext $context): Response
@@ -277,6 +281,7 @@ class CheckoutControllerDecorator extends StorefrontController
 
     /**
      * @Since("6.0.0.0")
+     *
      * @Route("/checkout/offcanvas", name="frontend.cart.offcanvas", options={"seo"="false"}, methods={"GET"}, defaults={"XmlHttpRequest"=true})
      */
     public function offcanvas(Request $request, SalesChannelContext $context): Response
@@ -288,16 +293,13 @@ class CheckoutControllerDecorator extends StorefrontController
         }
 
         $page = $this->offcanvasCartPageLoader->load($request, $context);
-
         $this->hook(new CheckoutOffcanvasWidgetLoadedHook($page, $context));
-
         $cart = $page->getCart();
         $this->addCartErrors($cart);
         $cartErrors = $cart->getErrors();
 
         if (!$request->query->getBoolean(self::REDIRECTED_FROM_SAME_ROUTE) && $this->routeNeedsReload($cartErrors)) {
             $cartErrors->clear();
-
             // To prevent redirect loops add the identifier that the request already got redirected from the same origin
             return $this->redirectToRoute(
                 'frontend.cart.offcanvas',
@@ -307,9 +309,7 @@ class CheckoutControllerDecorator extends StorefrontController
                 ),
             );
         }
-
         $cartErrors->clear();
-
         return $this->renderStorefront('@Storefront/storefront/component/checkout/offcanvas-cart.html.twig', ['page' => $page]);
     }
 

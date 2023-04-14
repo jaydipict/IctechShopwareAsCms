@@ -1,4 +1,5 @@
 <?php declare(strict_types=1);
+
 namespace IctechShopwareAsCms\Core\Content\Extension;
 
 use IctechShopwareAsCms\Core\Content\IctCms\Aggregate\IctCmsTranslation\IctCmsTranslationDefinition;
@@ -15,7 +16,8 @@ class LanguageExtension extends EntityExtension
             new OneToManyAssociationField(
                 'ictCms',
                 IctCmsTranslationDefinition::class,
-                'ict_cms_id')
+                'ict_cms_id'
+            )
         );
     }
     public function getDefinitionClass(): string

@@ -8,7 +8,6 @@ use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\StringField;
 use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
 
-
 class IctCmsTranslationDefinition extends EntityTranslationDefinition
 {
     public const ENTITY_NAME = 'ict_cms_translation';
@@ -40,6 +39,4 @@ class IctCmsTranslationDefinition extends EntityTranslationDefinition
             (new StringField('description', 'description'))->addFlags(new Required()),
         ]);
     }
-
-
 }

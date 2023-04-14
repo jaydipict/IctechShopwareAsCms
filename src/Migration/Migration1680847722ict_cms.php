@@ -26,7 +26,7 @@ class Migration1680847722ict_cms extends MigrationStep
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
     ");
 
-        $connection->executeStatement("
+        $connection->executeStatement('
         CREATE TABLE IF NOT EXISTS `ict_cms_translation` (
     `name` VARCHAR(255) NOT NULL,
     `subject` VARCHAR(255) NOT NULL,
@@ -41,7 +41,7 @@ class Migration1680847722ict_cms extends MigrationStep
     CONSTRAINT `fk.ict_cms_translation.ict_cms_id` FOREIGN KEY (`ict_cms_id`) REFERENCES `ict_cms` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT `fk.ict_cms_translation.language_id` FOREIGN KEY (`language_id`) REFERENCES `language` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-        ");
+        ');
     }
 
     public function updateDestructive(Connection $connection): void

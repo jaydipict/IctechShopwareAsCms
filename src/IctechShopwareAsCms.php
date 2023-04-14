@@ -18,9 +18,7 @@ class IctechShopwareAsCms extends Plugin
         }
 
         $connection = $this->container->get(Connection::class);
-
-        $connection->executeStatement('DROP TABLE IF EXISTS `ict_cms`');
         $connection->executeStatement('DROP TABLE IF EXISTS `ict_cms_translation`');
-
+        $connection->executeStatement('DROP TABLE IF EXISTS `ict_cms`');
     }
 }

@@ -2,7 +2,7 @@
   "name": "swag/plugin-skeleton",
   "description": "Now it’s possible to use Shopware 6 as a CMS. With this plugin Shopware 6 will convert into a CMS.",
   "type": "shopware-platform-plugin",
-  "version": "v1.0.0",
+  "version": "v1.0.2",
   "authors": [{"name": "Icreative Technologies"}],
   "license": "MIT",
   "autoload": {
@@ -10,12 +10,23 @@
       "IctechShopwareAsCms\\": "src/"
     }
   },
+    "require": {
+        "shopware/core": "6.4.*"
+    },
   "extra": {
     "shopware-plugin-class": "IctechShopwareAsCms\\IctechShopwareAsCms",
-      "plugin-icon": "",
+      "plugin-icon": "convert_to_cms.png",
     "label": {
-      "de-DE": "Skeleton plugin",
-      "en-GB": "IctechShopwareAsCms"
+      "de-DE": "In CMS umwandeln",
+      "en-GB": "Convert to CMS"
+    }
+  },
+  "require-dev": {
+    "nunomaduro/phpinsights": "^2.8"
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
     }
   }
 }

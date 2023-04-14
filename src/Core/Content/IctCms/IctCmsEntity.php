@@ -2,9 +2,9 @@
 
 namespace IctechShopwareAsCms\Core\Content\IctCms;
 
+use IctechShopwareAsCms\Core\Content\IctCms\Aggregate\IctCmsTranslation\IctCmsTranslationCollection;
 use Shopware\Core\Framework\DataAbstractionLayer\Entity;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityIdTrait;
-use IctechShopwareAsCms\Core\Content\IctCms\Aggregate\IctCmsTranslation\IctCmsTranslationCollection;
 
 class IctCmsEntity extends Entity
 {
