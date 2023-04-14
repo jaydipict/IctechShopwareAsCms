@@ -16,9 +16,6 @@ Component.register('sw-cms-el-config-custom-cms-form', {
         Mixin.getByName('cms-element'),
     ],
 
-    computed: {
-    },
-
     created() {
         this.createdComponent();
     },

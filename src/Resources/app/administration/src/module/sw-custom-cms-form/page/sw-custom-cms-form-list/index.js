@@ -103,6 +103,4 @@ Shopware.Component.register('sw-custom-cms-form-list', {
             this.total = total;
         },
     }
-
-
 });

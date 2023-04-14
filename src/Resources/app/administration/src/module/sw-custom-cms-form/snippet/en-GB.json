@@ -25,8 +25,8 @@
                     }
                 },
                 "list": {
-                    "cusCmsTitle": "Inquiry Form",
-                    "textCusForm": "Inquiry Form",
+                    "cusCmsTitle": "Inquiry/request a quote",
+                    "textCusForm": "Inquiry/request a quote",
                     "columnCmsName": "Name",
                     "columnCmsEmail": "Email",
                     "columnCmsContact": "Contact",
@@ -94,8 +94,7 @@
                 "formCustom": {
                     "label": "Custom Form"
                 }
-            },
-            "blockDisableState": "This block is not visible on any device. You can edit the block but the changes will not be visible in your shop. Edit this layout in shopping experiences module to change the block visibility."
+            }
         }
     },
     "sw-privileges": {

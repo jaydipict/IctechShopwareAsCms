@@ -95,6 +95,7 @@
             </call>
         </service>
 
+        <!--        Added arguments and service for inquiery form popup-->
         <service id="IctechShopwareAsCms\Storefront\Controller\CustomContactFormController" public="true">
             <argument type="service" id="ict_cms.repository.inner"/>
             <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>

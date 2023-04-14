@@ -27,6 +27,7 @@ class CustomContactFormController extends StorefrontController
         $this->systemConfigService = $systemConfigService;
     }
 
+//    function for the store form detail in database
     /**
     * @Route("/form/inquiry", name="frontend.form.inquiry.send", defaults={"csrf_protected"=false},methods={"POST"})
      * @param Request             $request

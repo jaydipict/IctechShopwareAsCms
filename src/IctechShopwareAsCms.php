@@ -8,6 +8,7 @@ use Shopware\Core\Framework\Plugin\Context\UninstallContext;
 
 class IctechShopwareAsCms extends Plugin
 {
+//    added uninstall plugin events
     public function uninstall(UninstallContext $context): void
     {
         parent::uninstall($context);

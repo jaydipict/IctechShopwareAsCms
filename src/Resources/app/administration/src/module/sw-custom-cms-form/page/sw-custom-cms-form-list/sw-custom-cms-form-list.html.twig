@@ -1,5 +1,6 @@
 {% block sw_custom_cms_form_list %}
     <sw-page class="sw-custom-cms-form-list">
+{#        block for global search#}
         {% block sw_custom_cms_list_search_bar %}
             <template #search-bar>
                 <sw-search-bar
@@ -10,6 +11,7 @@
             </template>
         {% endblock %}
 
+{#        block for title#}
         <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
         {% block sw_custom_cms_form_list_smart_bar_header %}
             <template #smart-bar-header>
@@ -40,6 +42,7 @@
         </template>
 
 
+{#        block for the listing entity#}
         <template #content>
             {% block sw_custom_cms_form_list_content %}
                 <div class="sw_custom_cms_form-list__content">
@@ -51,7 +54,8 @@
                             :disable-data-fetching="true"
                             :columns="formDataColumns"
                             :repository="cusCmsRepository"
-                            :is-loading="isLoading">
+                            :is-loading="isLoading"
+                            :showActions="false">
                         </sw-entity-listing>
                     {% endblock %}
                 </div>

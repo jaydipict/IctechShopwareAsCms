@@ -1,5 +1,4 @@
 import './page/sw-custom-cms-form-list';
-// import './page/sw-custom-cms-form-detail';
 
 const { Module } = Shopware;
 
@@ -20,12 +19,6 @@ Shopware.Module.register('sw-custom-cms-form', {
                 default: 'sw-custom-cms-form-list',
             },
             path: 'index',
-            // meta:{
-            //     privilege: 'custom-cms-form.viewer',
-            //     appSystem: {
-            //         view: 'list',
-            //     },
-            // },
         },
         // This is our second route
         detail: {

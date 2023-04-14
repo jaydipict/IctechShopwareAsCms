@@ -4,49 +4,49 @@
             "general": {
                 "config": {
                     "label": {
-                        "verticalAlign": "Vertical align",
-                        "alignment": "Alignment",
-                        "verticalAlignTop": "Top",
+                        "verticalAlign": "Vertikal ausrichten",
+                        "alignment": "Ausrichtung",
+                        "verticalAlignTop": "Spitze",
                         "verticalAlignCenter": "Center",
-                        "verticalAlignBottom": "Bottom",
-                        "displayMode": "Display mode",
+                        "verticalAlignBottom": "Unterseite",
+                        "displayMode": "Anzeigemodus",
                         "displayModeStandard": "Standard",
-                        "displayModeCover": "Cover",
-                        "displayModeStretch": "Stretch",
-                        "displayModeContain": "Contain",
-                        "autoSlide": "Auto slide",
-                        "autoplayTimeout": "Delay",
-                        "speed": "Animation delay"
+                        "displayModeCover": "Abdeckung",
+                        "displayModeStretch": "Strecken",
+                        "displayModeContain": "Enthalten",
+                        "autoSlide": "Auto-Folie",
+                        "autoplayTimeout": "Verzögerung",
+                        "speed": "Animationsverzögerung"
                     },
                     "tab": {
-                        "content": "Content",
-                        "settings": "Settings",
-                        "options": "Options"
+                        "content": "Inhalt",
+                        "settings": "Einstellungen",
+                        "options": "Optionen"
                     }
                 },
                 "list": {
-                    "cusCmsTitle": "Inquiry Form",
-                    "textCusForm": "Inquiry Form",
+                    "cusCmsTitle": "Anfrageformular",
+                    "textCusForm": "Anfrageformular",
                     "columnCmsName": "Name",
                     "columnCmsEmail": "Email",
-                    "columnCmsContact": "Contact",
-                    "columnCmsSubject": "Subject",
-                    "columnCmsDescription": "Description"
+                    "columnCmsContact": "Kontakt",
+                    "columnCmsSubject": "Thema",
+                    "columnCmsDescription": "Beschreibung"
                 }
             },
             "productName": {
-                "label": "Product Name"
+                "label": "Produktname"
             },
             "form": {
-                "label": "CustomForm",
+                "label": "Benutzerdefiniertes",
                 "config": {
                     "label": {
-                        "receiverEmail": "Receiver addresses",
-                        "title": "Title",
-                        "type": "Form type",
-                        "typeContact": "Contact",
+                        "receiverEmail": "Formular Empfängeradressen",
+                        "title": "Titel",
+                        "type": "Formulartyp",
+                        "typeContact": "Kontakt",
                         "typeNewsletter": "Newsletter",
-                        "confirmationText": "Confirmation text"
+                        "confirmationText": "Bestätigungstext"
                     },
                     "placeholder": {
                         "type": "Select a form type..."
@@ -54,37 +54,37 @@
                 },
                 "element": {
                     "label": {
-                        "action": "Action",
-                        "email": "Email address*",
-                        "firstName": "First name*",
-                        "lastName": "Last name*",
-                        "message": "Description*",
-                        "newsletterSubmit": "Continue",
-                        "phone": "Phone number",
-                        "privacy": "Privacy",
-                        "salutation": "Salutation*",
-                        "salutationUndisclosed": "Prefer not to disclose",
-                        "send": "Send",
-                        "subject": "Subject*",
-                        "subscribeToNewsletter": "Subscribe to newsletter"
+                        "action": "Aktion",
+                        "email": "E-Mail-Addresse*",
+                        "firstName": "Vorname*",
+                        "lastName": "Familienname*",
+                        "message": "Nachname*",
+                        "newsletterSubmit": "Beschreibung",
+                        "phone": "Weitermachen",
+                        "privacy": "Privatsphäre",
+                        "salutation": "die Familie*",
+                        "salutationUndisclosed": "Anrede*\nLieber nicht verraten",
+                        "send": "Sand",
+                        "subject": "Thema*",
+                        "subscribeToNewsletter": "Abonnieren Sie den Newsletter"
                     },
                     "placeholder": {
                         "firstName": "John Custom",
-                        "lastName": "Doe custom",
+                        "lastName": "Gewohnheit",
                         "email": "john@doe.com",
                         "phone": "+4920 3920173",
                         "subject": "Lorem ipsum dolor sit amet.",
-                        "message": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum."
+                        "message": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Bei vero eos et accusam et justo duo dolores et ea rebum."
                     },
                     "helpText": {
-                        "privacy": "I have read the data protection information.",
-                        "requiredFields": "Fields marked with * are required"
+                        "privacy": "Ich habe die Datenschutzhinweise gelesen\n.",
+                        "requiredFields": "Pflichtfelder sind mit * gekennzeichnet\n"
                     }
                 },
                 "preview": {
                     "label": {
-                        "formPreview": "Custom Form Preview",
-                        "send": "Send"
+                        "formPreview": "Vorschau des benutzerdefinierten Formulars\n",
+                        "send": "Schicken"
                     }
                 }
             }
@@ -92,16 +92,15 @@
         "blocks": {
             "custom-cms-form": {
                 "formCustom": {
-                    "label": "Custom Form"
+                    "label": "Benutzerdefiniertes Formular"
                 }
-            },
-            "blockDisableState": "This block is not visible on any device. You can edit the block but the changes will not be visible in your shop. Edit this layout in shopping experiences module to change the block visibility."
+            }
         }
     },
     "sw-privileges": {
         "permissions": {
             "cms": {
-                "label": "Shopping Experiences"
+                "label": "Einkaufserlebnisse"
             }
         }
     }

@@ -3,19 +3,23 @@
         xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/trunk/src/Core/System/SystemConfig/Schema/config.xsd">
     <card>
         <title>CMS configuration</title>
+<!--        default active switch-->
         <input-field type="text">
             <name>Plugin</name>
             <label>Plugin</label>
             <defaultValue>true</defaultValue>
         </input-field>
+<!--        plugin active deative switch-->
         <input-field type="bool">
             <name>ActiveDeactive</name>
             <label>Active/Deactive</label>
         </input-field>
+<!--        form active deactive switch-->
         <input-field type="bool">
             <name>InquiryFormPopup</name>
-            <label>Inquiry Form pop-up</label>
+            <label>Inquiry/request a quote</label>
 
+<!--            search bar switch-->
         </input-field>
         <input-field type="bool">
             <name>ShowSearch</name>

@@ -15,6 +15,7 @@
                             {% block cms_form_contact_csrf %}
                                 {{ sw_csrf('frontend.form.inquiry.send') }}
                             {% endblock %}
+{#                            inquiery model header#}
                         <div class="modal-header">
                             {% block page_checkout_aside_cancel_order_modal_header_title %}
                                 <h5 class="modal-title">{{ "contact.cusFormTitle"|trans|sw_sanitize }}</h5>
@@ -28,6 +29,7 @@
                                 </button>
                             {% endblock %}
                         </div>
+{#                            inquiery model content#}
                         <div class="modal-body">
                             <div class="form-content">
                                 <div class="{{ formRowClass }}">
@@ -101,36 +103,15 @@
 {#                                {% block cms_form_contact_submit %}#}
 {#                                    {% sw_include '@Storefront/storefront/element/cms-element-form/form-components/cms-element-form-submit.html.twig' %}#}
                                     {% block cms_form_submit %}
-                                        <button type="submit" class="btn btn-primary {{ floatEndClass }}">
+                                        <button type="submit" class="btn btn-primary {{ floatEndClass }} mb-3">
                                             {{ ( submitText ? submitText : 'contact.cusSubmitbtn' )|trans }}
                                         </button>
                                     {% endblock %}
 {#                                {% endblock %}#}
                             </div>
                         </div>
-{#                        <div class="modal-footer">#}
-{#                        </div>#}
                 </form>
                     </div>
-                        {% block cms_form_contact_hidden_fields %}
-                         <div class="form-hidden-fields">
-                            {# @deprecated tag:v6.5.0 - Block cms_form_contact_csrf will be removed. #}
-{#                            {% block cms_form_contact_csrf %}#}
-{#                                {{ sw_csrf('frontend.form.inquiry.send') }}#}
-{#                            {% endblock %}#}
-
-{#                            {% if page.navigationId and page.entityName %}#}
-{#                                <input type="hidden" name="navigationId" value="{{ page.navigationId }}"/>#}
-{#                                <input type="hidden" name="entityName" value="{{ page.entityName }}"/>#}
-{#                            {% else %}#}
-{#                                <input type="hidden" name="navigationId" value="{{ page.header.navigation.active.id }}"/>#}
-{#                            {% endif %}#}
-
-{#                            <input type="hidden" name="slotId" value="{{ element.id }}"/>#}
-
-{#                            <input type="submit" class="submit--hidden d-none" />#}
-                        </div>
-                    {% endblock %}
             </div>
         </div>
     </div>

@@ -25,6 +25,7 @@ Component.register('sw-cms-el-custom-cms-form', {
         },
     },
 
+    // creating a component
     created() {
         this.createdComponent();
     },
