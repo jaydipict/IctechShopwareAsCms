@@ -2,6 +2,31 @@
 
 {#get active and search value from config file and set it to the variable#}
 {% set activeAndDeactive = config('IctechShopwareAsCms.config.ActiveDeactive') %}
+{# @deprecated tag:v6.5.0 - purchaseUnit will be removed, use product.purchaseUnit if needed #}
+    {% set purchaseUnit = product.purchaseUnit %}
+
+    {# @deprecated tag:v6.5.0 - listingPrice will be removed without replacement, since it was removed from the product struct #}
+    {% set listingPrice = product.calculatedListingPrice %}
+
+    {# @deprecated tag:v6.5.0 - fromPrice will be removed without replacement #}
+    {% set fromPrice = listingPrice.from %}
+
+    {% set cheapest = product.calculatedCheapestPrice %}
+
+    {% set real = product.calculatedPrice %}
+    {% if product.calculatedPrices.count > 0 %}
+        {% set real = product.calculatedPrices.last %}
+    {% endif %}
+
+    {% set referencePrice = real.referencePrice %}
+
+    {% set displayFrom = product.calculatedPrices.count > 1 %}
+    {% set displayParent = product.variantListingConfig.displayParent and product.parentId === null %}
+
+    {% if displayParent %}
+        {% set displayFromVariants = displayParent and real.unitPrice !== cheapest.unitPrice %}
+        {% set real = cheapest %}
+    {% endif %}
 
 {% block component_product_box_price_info %}
 <div class="product-price-info">
@@ -36,6 +61,7 @@
         {% if activeAndDeactive != 'true' %}
         <div class="product-price-wrapper">
             {% set price = real %}
+
             {% set isListPrice = price.listPrice.percentage > 0 %}
             {% set isRegulationPrice = price.regulationPrice != null %}
 

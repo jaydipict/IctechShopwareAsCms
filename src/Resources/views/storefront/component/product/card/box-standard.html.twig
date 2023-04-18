@@ -3,7 +3,6 @@
 {#get active and search value from config file and set it to the variable#}
 {% set activeAndDeactive = config('IctechShopwareAsCms.config.ActiveDeactive') %}
 
-
 {#Block for product detail page ratings#}
 {% block component_product_box_rating %}
     {% if activeAndDeactive != 'true' %}

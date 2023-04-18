@@ -35,8 +35,10 @@ class CustomContactFormController extends StorefrontController
      * @param Request             $request
      * @param SalesChannelContext $salesChannelContext
      */
-    public function inCusForm(Request $request, SalesChannelContext $context): Response
+    public function inCusForm(Request $request, SalesChannelContext $context): JsonResponse
     {
+        $response = [];
+
            $data = $this->ictCmsRepository->create([
                 [
                     'name' => $request->get('firstName'),
@@ -46,8 +48,14 @@ class CustomContactFormController extends StorefrontController
                     'description' => $request->get('description'),
                 ],
             ], $context->getContext());
-        return $this->redirectToRoute('frontend.home.page', [
-            'data' => $data,
-            ]);
+
+        $response[] = [
+            'type' => 'success'
+        ];
+
+        return new JsonResponse($response);
+//        return $this->redirectToRoute('frontend.home.page', [
+//            'data' => $response,
+//            ]);
     }
 }

@@ -1,0 +1,31 @@
+{% sw_extends '@Storefront/storefront/component/listing/filter/filter-range.html.twig' %}
+
+{#get active and search value from config file and set it to the variable#}
+{% set activeAndDeactive = config('IctechShopwareAsCms.config.ActiveDeactive') %}
+
+
+{% block component_filter_range_toggle %}
+    {% if activeAndDeactive != 'true' %}
+        {# @deprecated tag:v6.5.0 - Bootstrap v5 removes `btn-block` class, use `d-grid` wrapper instead #}
+        <button class="filter-panel-item-toggle btn{% if sidebar and not feature('v6.5.0.0') %} btn-block{% endif %}"
+                aria-expanded="false"
+        {% if sidebar %}
+            {{ dataBsToggleAttr }}="collapse"
+            {{ dataBsTargetAttr }}="#{{ filterItemId }}"
+        {% else %}
+            {{ dataBsToggleAttr }}="dropdown"
+            data-boundary="viewport"
+            {{ dataBsOffsetAttr }}="0,8"
+            aria-haspopup="true"
+        {% endif %}>
+
+        {% block component_filter_range_display_name %}
+            {{ displayName }}
+        {% endblock %}
+
+        {% block component_filter_range_toggle_icon %}
+            {% sw_icon 'arrow-medium-down' style {'pack': 'solid', 'size': 'xs', 'class': 'filter-panel-item-toggle'} %}
+        {% endblock %}
+        </button>
+    {% endif %}
+{% endblock %}

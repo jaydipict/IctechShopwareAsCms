@@ -8,13 +8,20 @@
         <div class="modal-dialog" role="dialog">
             <div class="modal-dialog" role="dialog">
                     <div class="modal-content">
-                        <form action="{{ path('frontend.form.inquiry.send') }}"
+                        <form
+{#                            action="{{ path('frontend.form.inquiry.send') }}"#}
                               method="post"
+                              class="custom-cms-form"
                               data-form-csrf-handler="true"
                               data-form-validation="true">
                             {% block cms_form_contact_csrf %}
                                 {{ sw_csrf('frontend.form.inquiry.send') }}
                             {% endblock %}
+                            {# for popup modal   #}
+                            {% block project_detail_form_redirect %}
+                                <input type="hidden" name="projectURL" value = "{{ url('frontend.form.inquiry.send') }}" class="projectURL"/>
+                            {% endblock %}
+
 {#                            inquiery model header#}
                         <div class="modal-header">
                             {% block page_checkout_aside_cancel_order_modal_header_title %}
@@ -104,7 +111,7 @@
 {#                                {% block cms_form_contact_submit %}#}
 {#                                    {% sw_include '@Storefront/storefront/element/cms-element-form/form-components/cms-element-form-submit.html.twig' %}#}
                                     {% block cms_form_submit %}
-                                        <button type="submit" class="btn btn-primary {{ floatEndClass }} mb-3">
+                                        <button type="submit" data-product-create-submit="true" class="btn btn-primary {{ floatEndClass }} mb-3">
                                             {{ ( submitText ? submitText : 'contact.cusSubmitbtn' )|trans }}
                                         </button>
                                     {% endblock %}
@@ -112,6 +119,9 @@
                             </div>
                         </div>
                 </form>
+                        <div class="custom-success-msg">
+                            <h3>Your request sent succesfully.</h3>
+                        </div>
                     </div>
             </div>
         </div>

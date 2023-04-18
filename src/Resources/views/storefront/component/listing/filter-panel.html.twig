@@ -1,0 +1,21 @@
+{% sw_extends '@Storefront/storefront/component/listing/filter-panel.html.twig' %}
+
+{#get active and search value from config file and set it to the variable#}
+{% set activeAndDeactive = config('IctechShopwareAsCms.config.ActiveDeactive') %}
+
+
+
+{% block component_filter_panel_item_rating_select %}
+    {% if activeAndDeactive != 'true' %}
+        {% set rating = listing.aggregations.get('rating') %}
+
+        {% if rating.max > 0 %}
+            {% sw_include '@Storefront/storefront/component/listing/filter/filter-rating-select.html.twig' with {
+                sidebar: sidebar,
+                name: 'rating',
+                pluginSelector: 'filter-rating-select',
+                displayName: 'listing.filterRatingDisplayName'|trans|sw_sanitize
+            } %}
+        {% endif %}
+    {% endif %}
+{% endblock %}
