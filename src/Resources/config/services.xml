@@ -38,7 +38,8 @@
         </service>
 
         <!--        Added arguments for Checkout routes-->
-        <service id="IctechShopwareAsCms\Storefront\Controller\CheckoutControllerDecorator" decorates="Shopware\Storefront\Controller\CheckoutController" public="true">
+        <service id="IctechShopwareAsCms\Storefront\Controller\CheckoutControllerDecorator" decorates="Shopware\Storefront\Controller\CheckoutController"
+                 parent="Shopware\Storefront\Controller\CheckoutController" public="true">
             <argument type="service" id="Shopware\Core\Checkout\Cart\SalesChannel\CartService"/>
             <argument type="service" id="Shopware\Storefront\Page\Checkout\Cart\CheckoutCartPageLoader"/>
             <argument type="service" id="Shopware\Storefront\Page\Checkout\Confirm\CheckoutConfirmPageLoader"/>

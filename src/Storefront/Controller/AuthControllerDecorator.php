@@ -92,7 +92,7 @@ class AuthControllerDecorator extends StorefrontController
     /**
      * @Since("6.0.0.0")
      *
-     * @Route("/account/login", name="frontend.account.login.page", methods={"GET"})
+     * @Route("/account/login", name="frontend.account.login.page", methods={"GET"}, defaults={"XmlHttpRequest"=true})
      *
      * @NoStore
      */
@@ -134,7 +134,7 @@ class AuthControllerDecorator extends StorefrontController
     /**
      * @Since("6.3.4.1")
      *
-     * @Route("/account/guest/login", name="frontend.account.guest.login.page", methods={"GET"})
+     * @Route("/account/guest/login", name="frontend.account.guest.login.page", methods={"GET"}, defaults={"XmlHttpRequest"=true})
      *
      * @NoStore
      */
@@ -180,7 +180,7 @@ class AuthControllerDecorator extends StorefrontController
     /**
      * @Since("6.0.0.0")
      *
-     * @Route("/account/logout", name="frontend.account.logout.page", methods={"GET"})
+     * @Route("/account/logout", name="frontend.account.logout.page", methods={"GET"}, defaults={"XmlHttpRequest"=true})
      */
     public function logout(Request $request, SalesChannelContext $context, RequestDataBag $dataBag): Response
     {
@@ -261,7 +261,7 @@ class AuthControllerDecorator extends StorefrontController
     /**
      * @Since("6.1.0.0")
      *
-     * @Route("/account/recover", name="frontend.account.recover.page", methods={"GET"})
+     * @Route("/account/recover", name="frontend.account.recover.page", methods={"GET"}, defaults={"XmlHttpRequest"=true})
      */
     public function recoverAccountForm(Request $request, SalesChannelContext $context): Response
     {
@@ -281,7 +281,7 @@ class AuthControllerDecorator extends StorefrontController
     /**
      * @Since("6.1.0.0")
      *
-     * @Route("/account/recover", name="frontend.account.recover.request", methods={"POST"})
+     * @Route("/account/recover", name="frontend.account.recover.request", methods={"POST"},defaults={"XmlHttpRequest"=true})
      */
     public function generateAccountRecovery(Request $request, RequestDataBag $data, SalesChannelContext $context): Response
     {
@@ -310,7 +310,7 @@ class AuthControllerDecorator extends StorefrontController
     /**
      * @Since("6.1.0.0")
      *
-     * @Route("/account/recover/password", name="frontend.account.recover.password.page", methods={"GET"})
+     * @Route("/account/recover/password", name="frontend.account.recover.password.page", methods={"GET"}, defaults={"XmlHttpRequest"=true})
      */
     public function resetPasswordForm(Request $request, SalesChannelContext $context): Response
     {
@@ -369,7 +369,7 @@ class AuthControllerDecorator extends StorefrontController
     /**
      * @Since("6.1.0.0")
      *
-     * @Route("/account/recover/password", name="frontend.account.recover.password.reset", methods={"POST"})
+     * @Route("/account/recover/password", name="frontend.account.recover.password.reset", methods={"POST"}, defaults={"XmlHttpRequest"=true})
      */
     public function resetPassword(RequestDataBag $data, SalesChannelContext $context): Response
     {

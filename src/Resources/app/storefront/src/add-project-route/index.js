@@ -29,7 +29,6 @@ export default class addProjectRoute extends Plugin {
     }
 
     submitForm(){
-        var http = new XMLHttpRequest();
         var url = document.getElementsByClassName("projectURL");
         url = url[0].value;
         var firstName = document.querySelector('#form-firstName').value;
@@ -38,24 +37,21 @@ export default class addProjectRoute extends Plugin {
         var subject = document.querySelector('#form-subject').value;
         var description = document.querySelector('#form-description').value;
 
-        var params = 'firstName=' + firstName + '&email=' + email + '&phone=' + phone + '&subject=' + subject + '&description=' + description;
-        // var params = {
-        //     'firstName': firstName,
-        //     'email': email,
-        //     'phone': phone,
-        //     'subject': subject,
-        //     'description': description
-        // }
+        if(firstName !== null && email !== null && phone !== null && subject !== null && description !== null){
+            console.log('hereeeee');
+            var http = new XMLHttpRequest();
+            var params = 'firstName=' + firstName + '&email=' + email + '&phone=' + phone + '&subject=' + subject + '&description=' + description;
 
-        http.open('POST', url, true);
-        http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-        http.onload = function () {
-            let res = JSON.parse(this.response);
-            if (res[0].type === 'success' && this.status === 200) {
-                document.getElementsByClassName('custom-success-msg')[0].style.display = "block";
-                document.getElementsByClassName('custom-cms-form')[0].style.display = "none";
+            http.open('POST', url, true);
+            http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            http.onload = function () {
+                let res = JSON.parse(this.response);
+                if (res[0].type === 'success' && this.status === 200) {
+                    document.getElementsByClassName('custom-success-msg')[0].style.display = "block";
+                    document.getElementsByClassName('custom-cms-form')[0].style.display = "none";
+                }
             }
+            http.send(params);
         }
-        http.send(params);
     }
 }

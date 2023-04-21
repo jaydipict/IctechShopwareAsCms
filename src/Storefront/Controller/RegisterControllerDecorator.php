@@ -94,7 +94,7 @@ class RegisterControllerDecorator extends StorefrontController
     /**
      * @Since("6.0.0.0")
      *
-     * @Route("/account/register", name="frontend.account.register.page", methods={"GET"})
+     * @Route("/account/register", name="frontend.account.register.page", methods={"GET"}, defaults={"XmlHttpRequest"=true})
      *
      * @NoStore
      */
@@ -131,7 +131,7 @@ class RegisterControllerDecorator extends StorefrontController
     /**
      * @Since("6.3.1.0")
      *
-     * @Route("/customer-group-registration/{customerGroupId}", name="frontend.account.customer-group-registration.page", methods={"GET"})
+     * @Route("/customer-group-registration/{customerGroupId}", name="frontend.account.customer-group-registration.page", methods={"GET"}, defaults={"XmlHttpRequest"=true})
      *
      * @NoStore
      */
@@ -166,7 +166,7 @@ class RegisterControllerDecorator extends StorefrontController
     /**
      * @Since("6.0.0.0")
      *
-     * @Route("/checkout/register", name="frontend.checkout.register.page", options={"seo"="false"}, methods={"GET"})
+     * @Route("/checkout/register", name="frontend.checkout.register.page", options={"seo"="false"}, methods={"GET"}, defaults={"XmlHttpRequest"=true})
      *
      * @NoStore
      */
@@ -202,7 +202,7 @@ class RegisterControllerDecorator extends StorefrontController
     /**
      * @Since("6.0.0.0")
      *
-     * @Route("/account/register", name="frontend.account.register.save", methods={"POST"}, defaults={"_captcha"=true})
+     * @Route("/account/register", name="frontend.account.register.save", methods={"POST"}, defaults={"_captcha"=true,"XmlHttpRequest"=true})
      */
     public function register(Request $request, RequestDataBag $data, SalesChannelContext $context): Response
     {
@@ -257,7 +257,7 @@ class RegisterControllerDecorator extends StorefrontController
     /**
      * @Since("6.1.0.0")
      *
-     * @Route("/registration/confirm", name="frontend.account.register.mail", methods={"GET"})
+     * @Route("/registration/confirm", name="frontend.account.register.mail", methods={"GET"},defaults={"XmlHttpRequest"=true})
      */
     public function confirmRegistration(SalesChannelContext $context, QueryDataBag $queryDataBag): Response
     {

@@ -23,6 +23,7 @@ use Shopware\Core\System\SalesChannel\SalesChannelContext;
 use Shopware\Core\System\SystemConfig\SystemConfigService;
 use Shopware\Storefront\Checkout\Cart\Error\PaymentMethodChangedError;
 use Shopware\Storefront\Checkout\Cart\Error\ShippingMethodChangedError;
+use Shopware\Storefront\Controller\CheckoutController;
 use Shopware\Storefront\Controller\StorefrontController;
 use Shopware\Storefront\Framework\AffiliateTracking\AffiliateTrackingListener;
 use Shopware\Storefront\Framework\Routing\Annotation\NoStore;
@@ -47,7 +48,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * @deprecated tag:v6.5.0 - reason:becomes-internal - Will be internal
  */
 #[Package('storefront')]
-class CheckoutControllerDecorator extends StorefrontController
+class CheckoutControllerDecorator extends CheckoutController
 {
     private const REDIRECTED_FROM_SAME_ROUTE = 'redirected';
 
@@ -91,6 +92,8 @@ class CheckoutControllerDecorator extends StorefrontController
         $this->offcanvasCartPageLoader = $offcanvasCartPageLoader;
         $this->config = $config;
         $this->logoutRoute = $logoutRoute;
+//        parent::__construct($cartService, $cartPageLoader,$confirmPageLoader,$finishPageLoader,
+//                           $orderService,$paymentService,$offcanvasCartPageLoader,$config, $logoutRoute);
     }
 
     /**
@@ -98,12 +101,12 @@ class CheckoutControllerDecorator extends StorefrontController
      *
      * @NoStore
      *
-     * @Route("/checkout/cart", name="frontend.checkout.cart.page", options={"seo"="false"}, methods={"GET"})
+     * @Route("/checkout/cart", name="frontend.checkout.cart.page", options={"seo"="false"}, methods={"GET"}, defaults={"XmlHttpRequest"=true})
      */
     public function cartPage(Request $request, SalesChannelContext $context): Response
     {
         // get active&deactive switch value from config file.
-        $activeAndDeactive = $this->config->get('IctechShopwareAsCms.config.ActiveDeactive');
+        $activeAndDeactive = $this->config->get('IctechShopwareAsCms.config.ActiveDeactive',$context->getSalesChannelId());
         if ($activeAndDeactive != null) {
             return $this->redirectToRoute('frontend.home.page');
         }
@@ -177,7 +180,7 @@ class CheckoutControllerDecorator extends StorefrontController
     /**
      * @Since("6.0.0.0")
      *
-     * @Route("/checkout/finish", name="frontend.checkout.finish.page", options={"seo"="false"}, methods={"GET"})
+     * @Route("/checkout/finish", name="frontend.checkout.finish.page", options={"seo"="false"}, methods={"GET"}, defaults={"XmlHttpRequest"=true})
      *
      * @NoStore
      */
@@ -211,7 +214,7 @@ class CheckoutControllerDecorator extends StorefrontController
     /**
      * @Since("6.0.0.0")
      *
-     * @Route("/checkout/order", name="frontend.checkout.finish.order", options={"seo"="false"}, methods={"POST"})
+     * @Route("/checkout/order", name="frontend.checkout.finish.order", options={"seo"="false"},defaults={"XmlHttpRequest"=true} , methods={"POST"})
      */
     public function order(RequestDataBag $data, SalesChannelContext $context, Request $request): Response
     {
@@ -252,12 +255,12 @@ class CheckoutControllerDecorator extends StorefrontController
     /**
      * @Since("6.0.0.0")
      *
-     * @Route("/widgets/checkout/info", name="frontend.checkout.info", methods={"GET"}, defaults={"XmlHttpRequest"=true})
+     * @Route("/widgets/checkout/info", name="frontend.checkout.info",defaults={"XmlHttpRequest"=true} , methods={"GET"})
      */
     public function info(Request $request, SalesChannelContext $context): Response
     {
         // get active&deactive switch value from config file.
-        $activeAndDeactive = $this->config->get('IctechShopwareAsCms.config.ActiveDeactive');
+        $activeAndDeactive = $this->config->get('IctechShopwareAsCms.config.ActiveDeactive',$context->getSalesChannelId());
         if ($activeAndDeactive != null) {
             return $this->redirectToRoute('frontend.home.page');
         }
@@ -282,12 +285,12 @@ class CheckoutControllerDecorator extends StorefrontController
     /**
      * @Since("6.0.0.0")
      *
-     * @Route("/checkout/offcanvas", name="frontend.cart.offcanvas", options={"seo"="false"}, methods={"GET"}, defaults={"XmlHttpRequest"=true})
+     * @Route("/checkout/offcanvas", name="frontend.cart.offcanvas", options={"seo"="false"}, defaults={"XmlHttpRequest"=true} ,methods={"GET"})
      */
     public function offcanvas(Request $request, SalesChannelContext $context): Response
     {
         // get active&deactive switch value from config file.
-        $activeAndDeactive = $this->config->get('IctechShopwareAsCms.config.ActiveDeactive');
+        $activeAndDeactive = $this->config->get('IctechShopwareAsCms.config.ActiveDeactive',$context->getSalesChannelId());
         if ($activeAndDeactive != null) {
             return $this->redirectToRoute('frontend.home.page');
         }

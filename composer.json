@@ -2,7 +2,7 @@
   "name": "swag/plugin-skeleton",
   "description": "Now it’s possible to use Shopware 6 as a CMS. With this plugin Shopware 6 will convert into a CMS.",
   "type": "shopware-platform-plugin",
-  "version": "v1.0.2",
+  "version": "v1.0.0",
   "authors": [{"name": "Icreative Technologies"}],
   "license": "MIT",
   "autoload": {

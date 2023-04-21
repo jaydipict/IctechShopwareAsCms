@@ -6,15 +6,19 @@
 
 {#block for search layout #}
 {% block layout_header_search %}
-    <div class="col-12 order-2 col-sm order-sm-1 header-search-col">
-        {% if (activeAndDeactive == 'true') and (showSearch == 'true')  %}
-        <div class="row">
-            <div class="col">
-                {% sw_include '@Storefront/storefront/layout/header/search.html.twig' %}
+    {% if activeAndDeactive == 'true' %}
+        {% if showSearch == true %}
+            <div class="col-12 order-2 col-sm order-sm-1 header-search-col">
+                <div class="row">
+                    <div class="col">
+                        {% sw_include '@Storefront/storefront/layout/header/search.html.twig' %}
+                    </div>
+                </div>
             </div>
-        </div>
-        {% endif %}
-    </div>
+            {% endif %}
+    {% else %}
+        {{ parent() }}
+    {% endif %}
 {% endblock %}
 
 {#Block for wishlist layout#}

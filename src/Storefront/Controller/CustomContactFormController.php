@@ -30,7 +30,7 @@ class CustomContactFormController extends StorefrontController
 
 //    function for the store form detail in database
     /**
-     * @Route("/form/inquiry", name="frontend.form.inquiry.send", defaults={"csrf_protected"=false},methods={"POST"})
+     * @Route("/form/inquiry", name="frontend.form.inquiry.send", defaults={"csrf_protected"=false,"XmlHttpRequest"=true},methods={"POST"})
      *
      * @param Request             $request
      * @param SalesChannelContext $salesChannelContext
