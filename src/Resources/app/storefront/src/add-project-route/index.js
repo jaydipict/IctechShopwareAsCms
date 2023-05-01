@@ -38,7 +38,6 @@ export default class addProjectRoute extends Plugin {
         var description = document.querySelector('#form-description').value;
 
         if(firstName !== null && email !== null && phone !== null && subject !== null && description !== null){
-            console.log('hereeeee');
             var http = new XMLHttpRequest();
             var params = 'firstName=' + firstName + '&email=' + email + '&phone=' + phone + '&subject=' + subject + '&description=' + description;
 

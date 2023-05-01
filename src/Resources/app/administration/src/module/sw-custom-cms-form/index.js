@@ -43,7 +43,7 @@ Shopware.Module.register('sw-custom-cms-form', {
         path: 'sw.custom.cms.form.index',
         id: 'sw-custom-cms-form',
         parent: 'sw-customer',
-        label: 'Inquiry Contact Form',
+        label: 'Inquiry Form',
         color: '#F88962',
         position: 40,
         privilege: 'custom_cms_form.viewer',

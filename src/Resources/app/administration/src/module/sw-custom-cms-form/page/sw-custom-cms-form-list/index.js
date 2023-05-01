@@ -67,7 +67,6 @@ Shopware.Component.register('sw-custom-cms-form-list', {
         // get form criteria
         formDataCriteria() {
             const formDataCriteria = new Criteria(this.page, this.limit);
-            console.log('60',formDataCriteria);
             formDataCriteria.setTerm(this.term);
             formDataCriteria.addSorting(Criteria.sort(this.sortBy, this.sortDirection, this.naturalSorting));
             return formDataCriteria;

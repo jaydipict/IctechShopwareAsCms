@@ -22,7 +22,6 @@ Component.register('sw-cms-el-config-custom-cms-form', {
 
     methods: {
         createdComponent() {
-            console.log('enter config form creat method')
             this.initElementConfig('form');
         },
     },
