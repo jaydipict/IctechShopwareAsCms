@@ -7,10 +7,7 @@ Shopware.Module.register('sw-custom-cms-form', {
     icon: 'regular-users',
     title: 'Inquiry Form',
     description: 'Inquiry Form Description',
-    version: '1.0.0',
-    targetVersion: '1.0.0',
     type: 'plugin',
-    entity: 'ict_cms',
 
     routes: {
         //index list page routes
@@ -19,22 +16,6 @@ Shopware.Module.register('sw-custom-cms-form', {
                 default: 'sw-custom-cms-form-list',
             },
             path: 'index',
-        },
-        // This is our second route
-        detail: {
-            component: 'ssw-custom-cms-form-detail',
-            path: 'detail/:id',
-            meta: {
-                parentPath: 'sw.custom.cms.form.index',
-                privilege: 'custom_cms_form.viewer',
-            },
-            props: {
-                default(route) {
-                    return {
-                        cusCmsId: route.params.id,
-                    };
-                },
-            },
         },
     },
 
@@ -46,6 +27,5 @@ Shopware.Module.register('sw-custom-cms-form', {
         label: 'Inquiry Form',
         color: '#F88962',
         position: 40,
-        privilege: 'custom_cms_form.viewer',
     }],
 });

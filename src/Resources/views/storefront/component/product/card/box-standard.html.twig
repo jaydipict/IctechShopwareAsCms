@@ -5,29 +5,23 @@
 
 {#Block for product detail page ratings#}
 {% block component_product_box_rating %}
-    {% if activeAndDeactive != 'true' %}
-        {% if config('core.listing.showReview') %}
-            <div class="product-rating">
-                {% if product.ratingAverage %}
-                    {% sw_include '@Storefront/storefront/component/review/rating.html.twig' with {
-                        points: product.ratingAverage,
-                        style: 'text-primary'
-                    } %}
-                {% endif %}
-            </div>
-        {% endif %}
+    {% if activeAndDeactive == 'true' %}
+    {% else %}
+        {{ parent() }}
     {% endif %}
 {% endblock %}
 
 {% block component_product_box_price %}
-    {% if activeAndDeactive != 'true' %}
-       {% sw_include '@Storefront/storefront/component/product/card/price-unit.html.twig' %}
+    {% if activeAndDeactive == 'true' %}
+    {% else %}
+        {{ parent() }}
     {% endif %}
 {% endblock %}
 
 {% block component_product_box_action %}
-    {% if activeAndDeactive != 'true' %}
-        {% sw_include '@Storefront/storefront/component/product/card/action.html.twig' %}
+    {% if activeAndDeactive == 'true' %}
+    {% else %}
+        {{ parent() }}
     {% endif %}
 {% endblock %}
 

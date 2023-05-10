@@ -1,6 +1,6 @@
 {
     "contact": {
-        "headline": "Phone",
+        "headline": "Inquiry/request a quote",
         "info": "We look forward to hearing from you.",
         "subjectLabel": "Subject",
         "subjectPlaceholder": "Enter subject...",
@@ -11,7 +11,8 @@
         "success": "We have received your contact request and will process it as soon as possible.",
         "customContactLink": "Inquiry/request a quote",
         "cusFormTitle": "Inquiry/request a quote",
-        "cusSubmitbtn": "Submit"
+        "cusSubmitbtn": "Submit",
+        "sucmsg": "Your request sent succesfully."
     },
     "detail": {
         "ordernumberLabel": "Product number:",

@@ -1,14 +1,25 @@
-{% sw_extends '@Storefront/storefront/page/product-detail/buy-widget-form.html.twig' %}
+{% sw_extends '@Storefront/storefront/component/buy-widget/buy-widget.html.twig' %}
 
 {# get active and search value from config file and set it to the variable #}
 {% set activeAndDeactive = config('IctechShopwareAsCms.config.ActiveDeactive') %}
 {% set inquiryFormPopup = config('IctechShopwareAsCms.config.InquiryFormPopup') %}
 
-{% block page_product_detail_buy_form_inner %}
-    {# @var page \Shopware\Storefront\Page\Product\ProductPage #}
 
-    {# @var product \Shopware\Core\Content\Product\SalesChannel\SalesChannelProductEntity #}
-    {% set product = page.product %}
+{% block buy_widget_price %}
+    {% if activeAndDeactive == 'true' %}
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{% block buy_widget_tax %}
+    {% if activeAndDeactive == 'true' %}
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{% block buy_widget_buy_form %}
     {% if (activeAndDeactive == true) and (inquiryFormPopup == true) %}
     <div class="product-detail-form-container">
         <div class="col-md-6 pl-0">
@@ -43,7 +54,7 @@
                                 </div>
                                 {% sw_include '@Storefront/storefront/element/cms-element-custom-form/form-types/contact-custom-forms.html.twig' %}
                                 <div class="custom-success-msg" style="display: block;padding: 60px;">
-                                    <h3>{{ "contact.sucmsg"|trans|sw_sanitize }}</h3>
+                                    <h3>Your request sent succesfully.</h3>
                                 </div>
                             </div>
                         </div>
@@ -51,8 +62,8 @@
                 </div>
             {% endblock %}
         </div>
-    </div>
-    {% elseif activeAndDeactive == false %}
+    </div>    
+    {% else %}
         {{ parent() }}
     {% endif %}
 {% endblock %}

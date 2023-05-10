@@ -54,8 +54,32 @@ class CustomContactFormController extends StorefrontController
         ];
 
         return new JsonResponse($response);
-//        return $this->redirectToRoute('frontend.home.page', [
-//            'data' => $response,
-//            ]);
+    }
+
+
+    /**
+     * @Route("/form/inquirys", name="frontend.form.inquiry.sends", defaults={"csrf_protected"=false,"XmlHttpRequest"=true},methods={"POST"})
+     *
+     * @param Request             $request
+     * @param SalesChannelContext $salesChannelContext
+     */
+    public function inCusForms(Request $request, SalesChannelContext $context): Response
+    {
+        $response = [];
+        $productId = $request->get('productId');
+        $data = $this->ictCmsRepository->create([
+            [
+                'name' => $request->get('firstName'),
+                'email' => $request->get('email'),
+                'contact_number' => $request->get('phone'),
+                'subject' => $request->get('subject'),
+                'description' => $request->get('description'),
+            ],
+        ], $context->getContext());
+
+        $response[] = [
+            'type' => 'success'
+        ];
+        return $this->forwardToRoute('frontend.detail.page', [], ['productId' => $productId]);
     }
 }

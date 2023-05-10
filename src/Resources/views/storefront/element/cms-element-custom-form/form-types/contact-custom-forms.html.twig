@@ -1,6 +1,6 @@
 {% block cms_form_contact_custom_form %}
     <form
-        action="{{ path('frontend.form.inquiry.sends') }}"
+        action="{{ path('frontend.form.inquiry.send') }}"
         method="post"
         class="custom-cms-form"
         data-form-csrf-handler="true"
@@ -8,11 +8,9 @@
         {% block cms_form_contact_csrf %}
             {{ sw_csrf('frontend.form.inquiry.send') }}
         {% endblock %}
-
         {# for popup modal   #}
         {% block project_detail_form_redirect %}
-            <input type="hidden" name="projectURL" value="{{ url('frontend.form.inquiry.sends') }}" class="projectURL"/>
-            <input type="hidden" name="productId" value="{{ page.product.id }}" class="projectURL"/>
+            <input type="hidden" name="projectURL" value="{{ url('frontend.form.inquiry.send') }}" class="projectURL"/>
         {% endblock %}
 
         {#                            inquiery model header #}
