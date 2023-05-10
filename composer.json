@@ -1,5 +1,5 @@
 {
-  "name": "swag/plugin-skeleton",
+  "name": "ict/shopware-as-cms",
   "description": "Now it’s possible to use Shopware 6 as a CMS. With this plugin Shopware 6 will convert into a CMS.",
   "type": "shopware-platform-plugin",
   "version": "v1.0.0",
